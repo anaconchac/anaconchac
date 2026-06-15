@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ana Concha · Portfolio Desarrollo Full Stack</title>
+<!-- Google Fonts + Tabler Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  /* ---------- VS CODE DARK THEME (PROFESSIONAL) ---------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0f0f11;   /* fondo principal VS Code-like */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #e2e8f0;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+
+  /* custom scrollbar (inspirado en VSCode) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e1e1e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3c3c3c;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4f4f4f;
+  }
+
+  /* tipografía general */
+  h1, h2, h3, .nav-logo, .exp-role, .skill-name {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    text-decoration: none;
+    color: #6c9fef;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: #8bb9fe;
+    text-decoration: underline;
+  }
+
+  /* ---------- NAVBAR (sticky, estilo panel) ---------- */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #0a0a0c;
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid #2a2a2e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #e2e8f0 0%, #b9c7d9 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #b4bcc9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.2s;
+  }
+  .nav-links a:hover {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* ---------- HERO SECTION (moderno) ---------- */
+  .hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #252529;
+    background: radial-gradient(circle at 20% 30%, rgba(30, 30, 35, 0.4), transparent);
+  }
+  .avatar {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    border: 2px solid #3a3a44;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  .avatar:hover {
+    transform: scale(1.02);
+    border-color: #4d6b9b;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .badge {
+    display: inline-block;
+    background: #1a3627;
+    color: #8dd0a2;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.25rem 0.9rem;
+    border-radius: 30px;
+    letter-spacing: 0.3px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #2c523a;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #ffffff, #b9d0f0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 0.75rem;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: #cbd5e6;
+    max-width: 620px;
+    margin: 0 auto 1.8rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 0.7rem 1.8rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    border: none;
+  }
+  .btn-primary {
+    background: #0078d4;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,120,212,0.3);
+  }
+  .btn-primary:hover {
+    background: #1f8be8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,120,212,0.4);
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid #4a4a55;
+    color: #e2e8f0;
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: #6c9fef;
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  /* ---------- SECCIONES GENERALES ---------- */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid #26262c;
+  }
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8f9bb3;
+    margin-bottom: 2rem;
+    border-left: 3px solid #3e7bc4;
+    padding-left: 12px;
+  }
+
+  /* ----- SKILLS (tecno cards) ----- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card {
+    background: #18181c;
+    border: 1px solid #2c2c32;
+    border-radius: 18px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.2s ease;
+  }
+  .skill-card:hover {
+    background: #202024;
+    border-color: #3e6b9e;
+    transform: translateY(-2px);
+  }
+  .skill-icon {
+    font-size: 1.7rem;
+    color: #74b9ff;
+  }
+  .skill-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .skill-level {
+    font-size: 0.7rem;
+    color: #8892b0;
+    margin-top: 2px;
+  }
+
+  /* ----- PROYECTOS (cards con glow) ----- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+  }
+  .project-card {
+    background: #131316;
+    border-radius: 24px;
+    border: 1px solid #2a2a30;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: #3a5c8c;
+    box-shadow: 0 16px 28px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(72, 126, 197, 0.2);
+  }
+  .project-thumb {
+    height: 210px;
+    background: #09090b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #292932;
+    overflow: hidden;
+  }
+  .project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s;
+  }
+  .project-card:hover .project-thumb img {
+    transform: scale(1.02);
+  }
+  .project-body {
+    padding: 1.2rem 1.2rem 1.4rem;
+  }
+  .project-body h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f0f3fa;
+    margin-bottom: 8px;
+  }
+  .project-body p {
+    font-size: 0.8rem;
+    color: #abb2bf;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    font-size: 0.65rem;
+    background: #1e1e24;
+    color: #b9c7db;
+    padding: 0.2rem 0.7rem;
+    border-radius: 30px;
+    border: 0.5px solid #32323c;
+    font-weight: 500;
+  }
+  .project-body a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* ----- EXPERIENCIA (timeline oscura) ----- */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .exp-item {
+    display: flex;
+    gap: 1rem;
+  }
+  .exp-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #388bf0;
+    margin-top: 6px;
+    box-shadow: 0 0 0 2px #1a2c42;
+    flex-shrink: 0;
+  }
+  .exp-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #eef2ff;
+  }
+  .exp-company {
+    font-size: 0.85rem;
+    color: #8ba0ca;
+    margin-top: 2px;
+  }
+  .exp-period {
+    font-size: 0.7rem;
+    color: #6f7c9b;
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
+  }
+  .exp-desc {
+    font-size: 0.85rem;
+    color: #bfc9e0;
+    line-height: 1.6;
+  }
+
+  /* ---------- CONTACTO (links estilo terminal) ---------- */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    row-gap: 1rem;
+    background: #0c0c0e;
+    padding: 1.2rem 1.5rem;
+    border-radius: 28px;
+    border: 1px solid #28282e;
+  }
+  .contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #cbdcff;
+    background: #14141a;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    border: 0.5px solid #2e2e38;
+    transition: 0.2s;
+  }
+  .contact-item i {
+    font-size: 1.2rem;
+    color: #5f9eff;
+  }
+  .contact-item a {
+    color: #cbdcff;
+    text-decoration: none;
+  }
+  .contact-item a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  .contact-item:hover {
+    background: #1e1e28;
+    border-color: #5f7cae;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.7rem;
+    color: #6b7280;
+    border-top: 1px solid #26262c;
+  }
+
+  /* ajustes responsive */
+  @media (max-width: 720px) {
+    .nav {
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1rem;
+    }
+    .hero h1 {
+      font-size: 1.9rem;
+    }
+    .section {
+      padding: 2rem 1.2rem;
+    }
+    .skills-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .project-thumb {
+      height: 180px;
+    }
+  }
+  @media (max-width: 480px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">ana.concha</span>
+  <div class="nav-links">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="avatar">
+    <img src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/unnamed.png" alt="Ana Concha">
+  </div>
+  <span class="badge">Disponible para proyectos</span>
+  <h1>Desarrollador Full Stack</h1>
+  <p>
+    Desarrollo plataformas web, sistemas de registro para eventos,
+    automatizaciones, soluciones con inteligencia artificial y aplicaciones
+    escalables para empresas y startups.
+  </p>
+  <div class="hero-btns">
+    <button class="btn-primary" id="btnProyectos">Ver proyectos</button>
+    <button class="btn-secondary" id="btnContacto">Contactar</button>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-title">Tecnologías</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <i class="ti ti-brand-php skill-icon"></i>
+      <div><div class="skill-name">PHP</div><div class="skill-level">Avanzado</div></div>
+    </div>
+    <div class="skill-card">
+      <i class="ti ti-brand-javascript skill-icon"></i>
+      <div><div class="skill-name">JavaScript</div><div class="skill-level">Avanzado</div></div>
+    </div>
+    <div class="skill-card">
+      <i class="ti ti-database skill-icon"></i>
+      <div><div class="skill-name">MySQL</div><div class="skill-level">Avanzado</div></div>
+    </div>
+    <div class="skill-card">
+      <i class="ti ti-brand-html5 skill-icon"></i>
+      <div><div class="skill-name">HTML / CSS</div><div class="skill-level">Avanzado</div></div>
+    </div>
+    <div class="skill-card">
+      <i class="ti ti-brand-git skill-icon"></i>
+      <div><div class="skill-name">Git</div><div class="skill-level">Intermedio</div></div>
+    </div>
+    <div class="skill-card">
+      <i class="ti ti-server skill-icon"></i>
+      <div><div class="skill-name">REST APIs</div><div class="skill-level">Avanzado</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="proyectos">
+  <p class="section-title">Proyectos destacados</p>
+  <div class="projects-grid">
+
+    <!-- The NetPass -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <img src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/netpass.jpeg" alt="TheNetPass">
+      </div>
+      <div class="project-body">
+        <h3>TheNetPass</h3>
+        <p>
+          Plataforma integral para gestión de eventos y registros con generación
+          de códigos QR, validación de asistentes, envío de correos masivos,
+          automatización de campañas, analítica y personalizacion.
+        </p>
+        <div class="tags">
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">jQuery</span>
+          <span class="tag">QR</span>
+          <span class="tag">Mailing</span>
+        </div>
+        <p><a href="https://thenetpass.com" target="_blank" rel="noopener noreferrer">thenetpass.com →</a></p>
+      </div>
+    </div>
+
+    <!-- Sip Impressive -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <img src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/sipimpressive.jpeg" alt="sipimpressive">
+      </div>
+      <div class="project-body">
+        <h3>SIPIMPRESSIVE</h3>
+        <p>
+          Diseño y desarrollo web corporativo en Squarespace, enfocado en
+          experiencia de usuario, diseño moderno, optimización visual y
+          presentación profesional de servicios.
+        </p>
+        <div class="tags">
+          <span class="tag">Squarespace</span>
+          <span class="tag">UX/UI</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">SEO</span>
+        </div>
+        <p><a href="https://sipimpressive.com" target="_blank" rel="noopener noreferrer">sipimpressive.com →</a></p>
+      </div>
+    </div>
+
+    <!-- Proyecto Personal AI -->
+    <div class="project-card">
+      <div class="project-thumb">
+        <img src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/personal.jpeg" alt="personal AI project">
+      </div>
+      <div class="project-body">
+        <h3>Proyecto Personal</h3>
+        <p>
+          Desarrollo completo de plataforma web,
+          incorporando agentes de inteligencia artificial para automatización
+          de procesos, análisis de información y asistencia operativa dentro
+          de un entorno moderno y escalable.
+        </p>
+        <div class="tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">AI Agents</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">Full Stack</span>
+        </div>
+        
+        <p><a href="https://anaconchac.github.io/anaconchac/" target="_blank" rel="noopener noreferrer">proyecto personal →</a></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="experiencia">
+  <p class="section-title">Experiencia</p>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-role">Junior System Analyst</div>
+        <div class="exp-company">HolaCliente</div>
+        <div class="exp-period">Jul. 2025 – Actualidad</div>
+        <div class="exp-desc">
+          Análisis y soporte de sistemas internos, colaborando en la mejora
+          continua de plataformas web. Participación en tareas de seguridad,
+          monitoreo, mantenimiento técnico y optimización de aplicaciones
+          empresariales.
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-role">Software Developer (Prácticas)</div>
+        <div class="exp-company">HolaCliente</div>
+        <div class="exp-period">Jun. 2023 – Jul. 2025</div>
+        <div class="exp-desc">
+          Desarrollo y mantenimiento de plataformas web utilizadas por la
+          empresa en el área de Sistemas. Resolución de incidencias técnicas,
+          optimización de código en entornos productivos e implementación de
+          nuevas funcionalidades para mejorar procesos internos.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <p class="section-title">Contacto</p>
+  <div class="contact-row">
+    <div class="contact-item"><i class="ti ti-mail"></i> <a href="mailto:ana.conchac45@gmail.com">ana.conchac45@gmail.com</a></div>
+    <div class="contact-item"><i class="ti ti-brand-linkedin"></i> <a href="https://linkedin.com/in/ana-concha-2a9560267/" target="_blank" rel="noopener">linkedin.com/in/ana-concha-2a9560267/</a></div>
+    <div class="contact-item"><i class="ti ti-brand-github"></i> <a href="https://github.com/anaconchac?tab=repositories" target="_blank" rel="noopener">github.com/anaconchac</a></div>
+    <div class="contact-item"><i class="ti ti-phone"></i> <a href="tel:+51958343298">+51 958 343 298</a></div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 Ana Concha — Desarrollador web
+</footer>
+
+<!-- smooth scroll para botones (mejora UX, sin modificar contenido) -->
+<script>
+  (function() {
+    // desplazamiento suave a secciones
+    const btnProy = document.getElementById('btnProyectos');
+    const btnCont = document.getElementById('btnContacto');
+    const proyectosSection = document.getElementById('proyectos');
+    const contactSection = document.getElementById('contacto');
+    
+    if (btnProy && proyectosSection) {
+      btnProy.addEventListener('click', (e) => {
+        e.preventDefault();
+        proyectosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    if (btnCont && contactSection) {
+      btnCont.addEventListener('click', (e) => {
+        e.preventDefault();
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    // también se asegura que los enlaces del nav hagan smooth (opcional)
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const hash = link.getAttribute('href');
+        if (hash && hash.startsWith('#')) {
+          e.preventDefault();
+          const targetId = hash.substring(1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
