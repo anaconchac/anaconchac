@@ -1,1 +1,412 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Personal · Workforce Management Suite | Ana Concha</title>
+  <!-- Google Fonts + Tabler Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0c10;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #eef2ff;
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* header / breadcrumb */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1e1e24;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #b9c7db;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: 0.2s;
+    }
+    .back-link:hover {
+      background: #2d2d36;
+      color: white;
+    }
+
+    /* título principal */
+    .project-header {
+      margin-bottom: 2rem;
+      border-left: 4px solid #2d8cff;
+      padding-left: 1.2rem;
+    }
+    .project-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, #9bb9f0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .project-header p {
+      color: #8e9dbb;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    /* grilla de mockups (imágenes representativas) */
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .mockup-card {
+      background: #111114;
+      border: 1px solid #28282e;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      backdrop-filter: blur(2px);
+    }
+    .mockup-card:hover {
+      transform: translateY(-4px);
+      border-color: #3a6ea5;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+    }
+    .mockup-header {
+      background: #1a1a1f;
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid #2a2a30;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      color: #ccd6f0;
+    }
+    .mockup-header i {
+      color: #5f9eff;
+    }
+    .mockup-content {
+      padding: 1.5rem;
+    }
+
+    /* login mockup (personal.jpeg) */
+    .login-box {
+      background: #0c0c0f;
+      border-radius: 24px;
+      padding: 1.8rem;
+      border: 1px solid #26262e;
+    }
+    .login-icon {
+      background: #252532;
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .login-icon i {
+      font-size: 1.8rem;
+      color: #2d8cff;
+    }
+    .login-input {
+      background: #050507;
+      border: 1px solid #2a2a32;
+      border-radius: 14px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      color: #f0f3fa;
+      font-size: 0.85rem;
+    }
+    .login-input::placeholder {
+      color: #4f5b73;
+    }
+    .login-btn {
+      background: #0078d4;
+      border: none;
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      margin-top: 0.5rem;
+      cursor: default;
+      font-family: inherit;
+      transition: 0.1s;
+    }
+    .forgot-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      color: #7899d4;
+    }
+
+    /* workers dashboard mockup (image.png) */
+    .workers-dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .workers-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid #23232a;
+      padding-bottom: 0.8rem;
+    }
+    .badge-workers {
+      background: #1f3b2c;
+      color: #7dd3a0;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+    }
+    .search-sim {
+      background: #1a1a20;
+      border-radius: 30px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.7rem;
+      color: #7f8ea3;
+    }
+    .alpha-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0.8rem 0;
+    }
+    .alpha-letter {
+      background: #202026;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      color: #bbd1ff;
+    }
+    .workers-list {
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .worker-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #202024;
+      font-size: 0.8rem;
+    }
+    .worker-actions span {
+      margin-left: 12px;
+      background: #1e1e26;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+    }
+    .menu-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid #27272e;
+    }
+    .menu-tag {
+      background: #18181e;
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      color: #b9cbff;
+    }
+
+    /* descripción detallada del proyecto */
+    .description-section {
+      background: #0f0f13;
+      border-radius: 32px;
+      border: 1px solid #27272f;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+    .description-section h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .feature-item {
+      background: #14141a;
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      border-left: 3px solid #2d8cff;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1rem 0;
+    }
+    .tech-badge {
+      background: #1a283c;
+      color: #9bb9f0;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+    }
+    hr {
+      border-color: #26262e;
+      margin: 1rem 0;
+    }
+    .quote-note {
+      background: #0a1a1f;
+      border-radius: 20px;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #b9cfec;
+      margin-top: 1rem;
+    }
+    @media (max-width: 700px) {
+      .mockup-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  .project-banner {
+  margin: 2rem 0 3rem;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #27272f;
+  background: #111114;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.project-banner img {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+  </style>
+
+</head>
+<body>
+<div class="container">
+  <!-- enlace simbólico de regreso (portfolio) -->
+  <a href="#" class="back-link" onclick="history.back(); return false;">
+    <i class="ti ti-arrow-left"></i> Volver al portafolio
+  </a>
+
+  <div class="project-header">
+    <h1>📋 Workforce Manager · Proyecto Personal</h1>
+    <p>Sistema de gestión integral para control de trabajadores, asistencia, órdenes de servicio e inteligencia operativa</p>
+  </div>
+  <!-- Imagen principal del proyecto -->
+   <div class="project-banner">
+  <img 
+    src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/personal.jpeg" 
+    alt="Workforce Manager Preview">
+</div>
+<div class="project-banner">
+  <img 
+    src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/image2.png" 
+    alt="Workforce Manager Preview">
+</div>
+<div class="project-banner">
+  <img 
+    src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/image23.png" 
+    alt="Workforce Manager Preview">
+</div>
+<div class="project-banner">
+  <img 
+    src="https://raw.githubusercontent.com/anaconchac/anaconchac/main/image.png" 
+    alt="Workforce Manager Preview">
+</div>
+  
+  <!-- Descripción profunda del proyecto personal (revisión) -->
+  <div class="description-section">
+    <h2><i class="ti ti-file-description"></i> Revisión del proyecto: Workforce Intelligence Suite</h2>
+    <p>Este proyecto personal (desarrollado como plataforma full‑stack) nace de la necesidad de unificar la gestión de trabajadores, control de asistencia, disponibilidad y generación de órdenes de servicio en entornos industriales y de servicios. A partir de las capturas representativas mostradas, se puede apreciar un ecosistema robusto dividido en dos grandes bloques:</p>
+
+    <div class="features-grid">
+      <div class="feature-item"><strong>🔐 Autenticación segura</strong><br>Login con correo/contraseña, recuperación de cuenta y roles (administrador, supervisor, trabajador).</div>
+      <div class="feature-item"><strong>📇 Directorio inteligente</strong><br>Listado de trabajadores agrupado por letra (A-Z), buscador por nombre/DNI y acciones rápidas (J: justificar, L: licencia, R: reporte).</div>
+      <div class="feature-item"><strong>📊 Módulos clave</strong><br>Disponibilidad, asistencia geolocalizada, habilitaciones, órdenes de servicio, ingeniería y cumplimiento normativo.</div>
+      <div class="feature-item"><strong>📈 Reportes dinámicos</strong><br>Reportes diarios, exportación de asistencias, dashboards con métricas de productividad y alertas tempranas.</div>
+    </div>
+
+    <p>➕ <strong>Funcionalidades profundas (basadas en las imágenes):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #cbd5e6;">
+      <li>✅ Panel de "Workers" con indicador de trabajadores activos (9 activos en la muestra).</li>
+      <li>✅ Acciones individuales (J, L, R) que permiten gestionar incidencias, licencias o revisiones sin salir del listado.</li>
+      <li>✅ Menú lateral de navegación principal: Personal, Disponibilidad, Asistencia, Habilitaciones, Órdenes de Servicio, Ingeniería, Cumplimiento y reportes.</li>
+      <li>✅ Interfaz de login con enfoque corporativo y opción de restablecer contraseña (mejora la seguridad y experiencia del usuario).</li>
+      <li>✅ Diseño pensado para empresas con alta rotación de personal y necesidad de trazabilidad.</li>
+    </ul>
+
+    <hr>
+    <h2><i class="ti ti-cpu"></i> Arquitectura & tecnologías utilizadas</h2>
+    <div class="tech-stack">
+      <span class="tech-badge">Next.js 14 (App Router)</span>
+      <span class="tech-badge">TypeScript</span>
+      <span class="tech-badge">Tailwind CSS</span>
+      <span class="tech-badge">Node.js + Express</span>
+      <span class="tech-badge">PostgreSQL / Prisma</span>
+      <span class="tech-badge">OpenAI API (Agentes IA)</span>
+      <span class="tech-badge">JWT + bcrypt</span>
+      <span class="tech-badge">React Query</span>
+      <span class="tech-badge">Chart.js / Recharts</span>
+      <span class="tech-badge">Vercel / Railway</span>
+    </div>
+    <p>El sistema incorpora <strong>agentes de inteligencia artificial</strong> para automatizar sugerencias de asignación de personal según disponibilidad, predecir ausencias y generar resúmenes ejecutivos a partir de los reportes diarios. Los datos de las imágenes (login y workers) corresponden a la fase de prototipo funcional, actualmente en pruebas piloto.</p>
+
+    <div class="quote-note">
+      <i class="ti ti-info-circle" style="margin-right: 6px;"></i> 
+      <strong>Nota de revisión:</strong> Este proyecto personal demuestra habilidades full-stack, diseño de UI/UX orientado a la productividad, integración de IA y arquitectura escalable. Las capturas reflejan fielmente los módulos de autenticación y gestión de trabajadores, base del sistema operativo.
+    </div>
+    <div style="margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <span style="background: #2d2d36; border-radius: 30px; padding: 0.3rem 1rem;"><i class="ti ti-qrcode"></i> Escaneo de asistencia</span>
+      <span style="background: #2d2d36; border-radius: 30px; padding: 0.3rem 1rem;"><i class="ti ti-chart-bar"></i> Dashboard en tiempo real</span>
+      <span style="background: #2d2d36; border-radius: 30px; padding: 0.3rem 1rem;"><i class="ti ti-mail"></i> Notificaciones automáticas</span>
+    </div>
+  </div>
+  
+  <footer style="text-align: center; margin-top: 3rem; font-size: 0.7rem; color: #6a7894; border-top: 1px solid #1f1f26; padding-top: 1.5rem;">
+    Proyecto personal · Ana Concha — Demostración de capacidades en desarrollo full‑stack e inteligencia artificial.
+  </footer>
+</div>
+</body>
+</html>
+
